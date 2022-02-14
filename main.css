@@ -1,55 +1,92 @@
-/*
-질문들
-1. 버튼 만들때 글자 길이에 따라 버튼 크기도 달라지는데 각각 버튼을 구성해주어야 하는지?
-2. overflow-x = scroll 을 특정부분 까지만 할수 있도록 할수 있는지?
-3. vertical-align: bottom; 이 header에서는 되고 bottom-menu에서는 왜 안되는지?
-4. position: fixed를 하면 왜 사라지는지
-*/
-
 * {
   box-sizing: border-box;
 }
-body{
+body {
   max-width: 640px;
   margin: 0 auto;
   background-color: #fafafa;
   font-family: Apple SD Gothic Neo;
 }
-img{
+img {
   max-width: 100%;
   width: 100%;
 }
-a{
+a {
   text-decoration: none;
 }
-
-.title{
-  font-size: 36px;
-  line-height: 40px;
+.warp {
+  padding-bottom: 72px;
+}
+.blind {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+}
+.title {
+  font-size: 18px;
   font-style: normal;
   font-weight: bold;
+  margin-bottom: 24px;
 }
 
-.banner-box{
+/* button은 padding으로 값을 주어서 문자 길이 변화에도 대응하게 한다. */
+.badges {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  font-size: 11px;
+  color: #000;
+  background-color: #fff;
+}
+.content-section {
+  margin-top: 32px;
+  margin-bottom: 48px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* 공통된 section은 따로 빼놓아서 재활용한다. */
+.list-thumb-box {
+  margin: 0 -20px;
+  padding-left: 20px;
   overflow: hidden;
   overflow-x: scroll;
 }
-.banner{
+.list-thumb-box .list-thumb {
   width: 2020px;
 }
+.list-thumb-box .list-thumb li {
+  display: inline-block;
+  width: 142px;
+  margin-right: 12px;
+}
+.list-thumb-box .link-info {
+  margin-top: 20px;
+}
+.list-thumb-box .link-info .link-text {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
 
-.header-section{
-  position: fixed;
+.header-section {
+  position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
   max-width: 640px;
   padding: 24px 20px 14px;
 }
-.header-section .logo{
+.header-section .logo {
   width: 100px;
 }
-.header-section .nav-area{
+.header-section .nav-area {
   margin: 20px -20px 8px;
   overflow: hidden;
   overflow-x: auto;
@@ -64,7 +101,7 @@ a{
   color: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50px;
-  text-align: center;
+  text-align: center;ㅇ
   margin-right: 8px;
   font-size: 16px;
   font-weight: bold;
@@ -92,15 +129,15 @@ a{
 .menu-section {
   background-color: #fff;
   border-bottom: 1px solid #fafafa;
-  padding: 24px 36px 24px;
+  padding: 24px 8px 24px;
 }
 .menu-section .menu {
   overflow: hidden;
 }
 .menu-section .menu li {
   width: 25%;
-  float: left;
   display: inline-block;
+  float: left;
   text-align: center;
   margin-bottom: 16px;
 }
@@ -121,335 +158,113 @@ a{
 }
 
 /* place-banner */
-.place-banner-section{
+.place-banner-section {
   padding: 24px 20px 14px;
-}
-.place-banner-section .banner li{
-  padding: 10px 10px 10px 0px;
-  margin-top: 20px;
-  float: left;
-}
-.place-banner-section .banner li img{
-  width: 284px;
-  height: 284px;
-}
-.place-banner-section .banner li .link-place-banner{
-  display: inline-block;
-}
-.banner li .nav-area{
-  width: 23%;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  margin-right: 8px;
-  border-radius: 50px;
-}
-.banner li .place-banner-btn{
-  display: block;
-  color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: bold;
- } 
-.place-banner-section .banner li .place-banner-text{
-  width: 284px;
-  margin-top: 4px;
-  color: black;
-  font-size: 30px;
-  font-weight: bold;
-  display: block;
-}
-.place-banner-section .banner li .place-banner-text:hover{
-  color: rgba(0, 0, 0, 0.2);
 }
 
 /* event-banner */
-.event-banner-section{
+.event-banner-section {
   width: 100%;
   height: 100%;
 }
 
 /* today-sale */
-.today-sale-section{
+.card-thumb-box {
   position: relative;
-  padding: 40px 20px 20px;
-}
-.today-sale-section .today-sale{
-  padding-top: 40px;
-  width: 600px;
-  height: 746px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
 }
-.today-sale-section .today-sale .today-sale-btn{
+.card-thumb-box .badges-area {
   position: absolute;
-  margin: 20px 0 0 20px;
-  width: 80px;
-  height: 50px;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
-  text-align: center;
+  left: 16px;
+  top: 16px;
 }
-.today-sale-section .today-sale .today-sale-btn .today-sale-btn-text{
-  margin-top: 13px;
-  font-size: 23px;
+.card-thumb-box .card-info {
+  padding: 24px 24px;
 }
-.today-sale-section .today-sale .today-sale-explanation{
-  margin: 50px 0 0 50px;
-}
-.today-sale-section .today-sale .today-sale-tag {
-  display: flex;
-}
-.today-sale-section .today-sale .today-sale-explanation .today-sale-ping{
-  width: 40px;
-}
-.today-sale-section .today-sale .today-sale-explanation .today-sale-place{
-  margin-top: 10px;
-  margin-left: 5px;
-  font-size: 25px;
-  font-weight: 700;
-  text-align: right;
-}
-.today-sale-section .today-sale .today-sale-explanation .today-sale-explanation-text{
-  font-size: 40px;
+.card-thumb-box .card-info .place-title {
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 20px;
-  line-height: 55px;
+  line-height: 1.2;
 }
-.today-sale-section .today-sale .today-sale-explanation .today-sale-price{
-  font-size: 30px;
+.pin-area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.pin-area .pin {
+  width: 18px;
+}
+.pin-area .place {
+  margin-left: 8px;
+  font-size: 14px;
   font-weight: 700;
   text-align: right;
-  float: right;
 }
-.today-sale-section .today-sale .today-sale-explanation .today-discount-price{
+.price-area {
+  margin-top: 4px;
+  text-align: right;
+}
+.price-area .discount-price-area {
   display: flex;
-  margin-right: 30px;
+  align-items: center;
+  justify-content: flex-end;
 }
-.today-sale-section .today-sale .today-sale-explanation .today-sale-percent{
-  color:red;
+.price-area .discount-price-area .percent {
+  color: red;
   margin-right: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
-.today-sale-section .today-sale .today-sale-explanation .today-sale-money{
+.price-area .discount-price-area .price {
   color: gray;
-  text-decoration:line-through;
+  font-size: 14px;
+  text-decoration: line-through;
 }
-.today-sale-section .today-sale .today-sale-explanation .today-sale-discount-price{
-  margin-right: 30px;
-  font-size: 40px;
+.price-area .discount-price {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-/* new-place */
-.new-place-banner-section{
+/* new-place-banner */
+.new-place-section-banner{
   padding: 24px 20px 14px;
-} 
-.new-place-banner-section .banner li{
-  padding: 10px 10px 10px 0px;
-  margin-top: 20px;
-  float: left;
-}
-.new-place-banner-section .banner li img{
-  width: 284px;
-  height: 284px;
-}
-.new-place-banner-section .banner li .link-new-place-banner{
-  display: inline-block;
-}
-.new-place-banner-section .banner li .nav-area{
-  width: 25%;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  margin-right: 8px;
-  border-radius: 50px;
-}
-.new-place-banner-section .banner li .new-place-banner-btn{
-  display: block;
-  color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-  margin-top: 5px;
-  font-size: 16px;
-  font-weight: bold;
- }
-.new-place-banner-section .banner li .new-place-banner-text{
-  width: 284px;
-  margin-top: 4px;
-  color: black;
-  font-size: 30px;
-  font-weight: bold;
-  display: block;
-}
-.new-place-banner-section .banner li .new-place-banner-text:hover{
-  color: rgba(0, 0, 0, 0.2);
 }
 
 /* bottom-menu */
-.bottom-menu-section{
-  /* position: fixed; */
-  width: 640px;
-  height: 240px;
-  background: #FFFFFF;
-  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 20px 20px 0px 0px;
-}
-.bottom-menu-section .bottom-menu-bar{
-  /* position: fixed; */
-}
-.bottom-menu-section .bottom-menu-bar li{
-  display: inline-block;
-  margin: 10px;
-  padding-top: 30px;
-  padding-left: 10px;
-  width: 15%;
-  text-align: center;
-}
-.bottom-menu-section .bottom-menu-bar li .bottom-menu-btn{
-  display: inline-block;
-}
-.bottom-menu-section .bottom-menu-bar li .bottom-menu-btn img{
-  height: 48px;
-  width: 48px;
-}
-.bottom-menu-section .bottom-menu-bar li .bottom-menu-text{
-  display: block;
-  color: gray;
-  font-size: 18px;
-}
-.bottom-menu-section .bottom-menu-bar li .bottom-menu-text:hover{
-  color: black;
-}
-.bottom-menu-section .bottom-menu-nav-bar img{
-  /* 왜 안될까요..?? */
-  vertical-align: bottom;
-  margin-top: 20px; 
-}
-
-/*
-기존 코드
-
-*{
-  box-sizing: border-box;
-}
-
-body{
+.bottom-menu-section {
+  position: fixed;
+  bottom: 0px;
   max-width: 640px;
-  margin: 0 auto;
-  background-color: #fafafa;
-  font-family: Apple SD Gothic Neo;
-}
-
-img{
-  max-width: 100%;
   width: 100%;
 }
-
-a{
-  text-decoration: none;
+.bottom-menu-section .bottom-menu-bar {
+  background: #ffffff;
+  box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px 10px 0px 0px;
+  clear: both;
+  overflow: hidden;
+  padding: 18px 20px 12px;
 }
-
-nav{
-  width: 500px;
-  padding-left: 20px;
-}
-
-.header-section{
-  position: fixed;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  max-width: 640px;
-  padding: 24px 20px 14px;
-}
-
-.btn{
-  /* Button_box 
-  height: 36px;
-  top: 20%;
-  color: #fff;
-  cursor: pointer;
-  transition: .4s;
-  border: 1px solid #FFFFFF;
-  box-sizing: border-box;
-  border-radius: 50px;
+.bottom-menu-section .bottom-menu-bar li {
+  display: inline-block;
+  float: left;
+  width: 20%;
   text-align: center;
-  padding-top: 3%;
+  /* background-color: blueviolet; */
 }
-
-.btn:hover{
-  background-color: #333;
-  color:white;
+.bottom-menu-section .bottom-menu-bar li .bottom-menu-btn {
+  display: inline-block;
 }
-
-.btn_home{
-  width: 54px;
+.bottom-menu-section .bottom-menu-bar li .bottom-menu-btn img {
+  height: 24px;
+  width: 24px;
 }
-
-.btn_hot-place{
-  width: 120px;
-  margin-left: 18%;
+.bottom-menu-section .bottom-menu-bar li .bottom-menu-text {
+  display: block;
+  color: gray;
+  font-size: 12px;
 }
-
-.btn_event{
-  width: 80px;
-  margin-left: 55%;
+.bottom-menu-section .bottom-menu-bar li .bottom-menu-text:hover {
+  color: black;
 }
-
-
-.header-section .logo{
-  width: 100px;
-}
-
-.header-section .main-banner img{
-  vertical-align: bottom;
-}
-
-.menu{
-  position: relative;
-  max-width: 640px;
-  height: 172px;
-  font-size: 13px;
-  text-align: center;
-  /* color: rgba(0, 0, 0, 0.4); 
-}
-
-.menu a{
-  position: absolute;
-  color: rgba(0, 0, 0, 0.4);
-  padding: 5%;
-}
-
-.menu .home{
-  left: 5%;
-}
-
-.menu .cut{
-  left: 30%;
-}
-
-.menu .tour{
-  right: 28%;
-}
-
-.menu .exercise{
-  right: 5%;
-}
-
-.menu .cafe{
-  left: 5%;
-  bottom: 0;
-}
-
-.menu .food{
-  left: 30%;
-  bottom: 0;
-}
-
-.menu .hotel{
-  right: 30%;
-  bottom: 0;
-}
-
-.menu .more{
-  right: 5%;
-  bottom: 0;
-} 
-*/
